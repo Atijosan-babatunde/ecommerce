@@ -1,16 +1,16 @@
-// import { gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 
-// const getProducts  = gql`
-// query{
-//     products{
-//         id
-//         title
-//         image_url
-//         price(currency:USD)
-//         product_options{
-//             title
-//         }
-//     }
-// }`
-// ;
+export const getProducts = gql`
+            query{
+                products{
+                    id
+                    title
+                    image_url
+                    price(currency:USD)
+                    product_options{
+                        title
+                    }
+                }
+            }`
+    ;
