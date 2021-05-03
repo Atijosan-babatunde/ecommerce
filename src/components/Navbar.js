@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom';
-import logo from '../img/logo.jpg';
-import  './style.css';
+import logo from '../img/logo.jpg'
+import './style.css';
 
 
 
 export default  class Navbar extends Component {
     render(){
         return(
-           <nav className="navbar navbar-expand-sm navbar-dark px-sm-5">
+           <nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
               <Link to="/">
                  <img src={logo} alt="store" className="navbar-brand" width="40"/>
               </Link>
@@ -20,7 +20,7 @@ export default  class Navbar extends Component {
                   </li>
               </ul>
               <Link to="/Cart" className="ml-auto">
-                 <button className="side">
+                 <button className="cat">
                  <span className="mr-2">
                    <i class="fas fa-shopping-cart"/>
                  </span>
@@ -31,3 +31,6 @@ export default  class Navbar extends Component {
         )
     }
 };
+
+
+
