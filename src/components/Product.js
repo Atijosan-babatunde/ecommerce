@@ -1,61 +1,46 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
-import {ProductConsumer} from '../context';
-import {Link} from 'react-router-dom';
-
-import PropTypes from 'prop-types';
 
 
+function Product(props) {
+    const { addToCart , isInCart , product } = props;
+    const { id , price, title , image_url } = product;
+
+    return (
+        <div className="col-8 mx-auto col-md-4 col-lg-4 my-3">
+            <div className="card">
+                <div>
+
+                    <div className="img-container p-5" >
+                        <Link to={`/details?id=${id}`} onClick={() => props.goToDetail(props.product)}>
+                            <img src={image_url} alt="product" className="card-img-top" />
+                        </Link>
+                        <button className="cart-btn" disabled={isInCart ? true : false} onClick={() => {
+                            addToCart(product)
+
+                        }}>
+                            {isInCart ? (<p className="text-capitalize mb-0" disabled> In Cart </p>) : (<i className="fas fa-shopping-cart" />)}
+                        </button>
+                    </div>
+                </div>
 
 
-export default  class Product extends Component {
-    render(){
-        const {id, title, img, price, inCart} = this.props.product;
-        return(
-            <div className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-               <div className="card">
-
-                   <ProductConsumer> 
-                       {value =>(  
-                     <div className="img-container p-5" onClick={()=> value.handleDetail}>
-                       <Link to="/details">
-                         <img src={img} alt="product" className="card-img-top"/>
-                       </Link>
-                       <button className="cart-btn" disabled={inCart ? true : false} onClick={()=> {
-                           value.addToCart(id);
-                           value.openModal(id);
-                       }}>
-                       {inCart? (<p className="text-capitalize mb-0" disabled>{" "} in cart</p>):(<i className="fas fa-shopping-cart"/>)}
-                       </button>
-                       
-                   </div>)}
-                      
-                 
-                
-                  </ProductConsumer>
-                  
-
-                   <div className="card-footer d-flex justify-content-between">
-                      <p className="align-self-center mb-0">
+                <div className="card-footer d-flex justify-content-between">
+                    <p className="align-self-center mb-0">
                         {title}
-                      </p>
-                      <h5 className="text-blue font-italic mb-0">
+                    </p>
+                    <h5 className="text-blue font-italic mb-0">
                         <span className="mr-1">$</span>
                         {price}
-                      </h5>
-                   </div>
-               </div>
+                    </h5>
+                </div>
             </div>
-        )
-    }
+
+        </div>
+    )
 }
 
-Product.propTypes = {
-    product:PropTypes.shape({
-        id:PropTypes.number,
-        img:PropTypes.string,
-        title:PropTypes.string,
-        price:PropTypes.number,
-        inCart:PropTypes.bool
-    }).isRequired
-}
+
+
+export default Product
