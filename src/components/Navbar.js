@@ -20,7 +20,7 @@ export default  class Navbar extends Component {
                   </li>
               </ul>
               <Link to="/Cart" className="ml-auto">
-                 <button className="cat">
+                 <button className=" justify-content-end text-end cat">
                  <span className="mr-2">
                    <i class="fas fa-shopping-cart"/>
                  </span>
